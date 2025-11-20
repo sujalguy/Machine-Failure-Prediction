@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload CSV</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .table-container {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            width: 80%;
+            margin: auto;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th {
+            background: #333;
+            color: white;
+        }
+        td {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📂 Upload Machine CSV</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="csv_file" required>
+    <button type="submit">Upload File</button>
+</form>
+
+<br>
+
+{% if table %}
+    <h3>📄 Uploaded CSV Data</h3>
+    <div class="table-container">
+        {{ table|safe }}
+    </div>
+
+    <br>
+    <a href="{% url 'predict' %}">
+        <button>Proceed to Analysis →</button>
+    </a>
+{% endif %}
+
+</body>
+</html>
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Graph Dashboard</title>
+    <style>
+        body {
+            background: #eef1f7;
+            font-family: Arial;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            width: 70%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px #aaa;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        img {
+            margin-top: 20px;
+            width: 70%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📊 Advanced Matplotlib Graphs</h1>
+
+<div class="box">
+
+    <form method="get">
+        <label>Select Graph Type:</label>
+        <h2>Predicted Failure Value: {{ predicted_value }}</h2>
+
+        <select name="graph_type">
+            {% for opt in graph_options %}
+                <option value="{{ opt }}" {% if graph_type == opt %}selected{% endif %}>
+                    {{ opt }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Show Graph</button>
+    </form>
+
+    <img src="data:image/png;base64,{{ graph }}">
+</div>
+
+</body>
+</html>
+
+
+
+
